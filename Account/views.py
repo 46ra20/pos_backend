@@ -33,13 +33,13 @@ class LoginView(APIView):
             print(username,password)
             auth = authenticate(request=request,username=username,password=password)
             if(auth):
-                login(request=request,user=auth)
-                return Response({'message':'Login successfully','type':"success"})
+                user = login(request=request,user=auth)
+                return Response({'message':'Login successfully','type':"success",'user':user})
 
             elif User.objects.filter(username=username):
-                return Response({'message':"Please enter correct password",'type':"warning"})
+                return Response({'password':"Please enter correct password",'type':"warning"})
             else:
-                return Response({'message':"Sorry, No user with this username.",'type':"danger"})
+                return Response({'username':"User doesn't exist.",'type':"danger"})
         # if(serializer.is_valid()):
         #     username=serializer.validated_data['username']
         #     password=serializer.validated_data['password']

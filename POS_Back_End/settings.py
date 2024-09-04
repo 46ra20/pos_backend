@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-od9)hoxzc^6_$u4=_qnairxcz=x2g-+b1rc)-hsb(p!$mt0r=6
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_ORIGINS=['*']
+
 
 
 # Application definition
@@ -39,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Account',
-    'Product'
+    'Product',
+    'corsheaders',
+    'OwnerAndBankAccount',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +54,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
+]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'POS_Back_End.urls'
 
