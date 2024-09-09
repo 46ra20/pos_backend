@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .serializer import ProductSerializer,CategorySerializer,BrandSerializer
+from .serializer import ProductSerializer,CategorySerializer,BrandSerializer,ProductSearchByNameSerializer
 from .models import ProductModel,CategoryModel,BrandModel
 
 from rest_framework.views import APIView,Response
@@ -26,17 +26,17 @@ class ProductView(ViewSet):
         return Response(serializer.data)
     
     def create(self,request,userId):
-        serializer = ProductSerializer(data = request.data)
+        serializer = ProductSerializer(data = request.data,required=False)
         print(serializer.is_valid())
-        # print(serializer.data,request.data)
-        # print(serializer.errors)
+        print(serializer.data,request.data)
+        print(serializer.errors)
         if serializer.is_valid():
             serializer.save()
             return Response({'message':'Your product add successfully,','type':'success'})
         return Response({'message':'Something wrong please try agin,','type':'danger'})
     
     def update(self,request,id):
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductSerializer(data=request.data,partial=True)
         print(request.data)
 
         if serializer.is_valid():
@@ -50,3 +50,11 @@ class ProductView(ViewSet):
         if product.delete():
             return Response({'message':'Your product delete successfully,','type':'success'})
         return Response({'message':'Something wrong please try agin,','type':'danger'})
+
+class ProductSearchByName(ViewSet):
+    def list(self,request,key):
+        print(key)
+        if key:
+            query = ProductModel.objects.filter(product_name__contains=key)|ProductModel.objects.filter(product_code__contains=key)
+            serializer = ProductSearchByNameSerializer(query,many=True)
+            return Response(serializer.data)

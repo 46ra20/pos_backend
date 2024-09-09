@@ -22,4 +22,5 @@ urlpatterns = [
     path('account/',include('Account.urls')),
     path('product/',include('Product.urls')),
     path('owner_and_bank_account/',include('OwnerAndBankAccount.urls')),
+    path('product_sales/',include('SalesProduct.urls')),
 ]
