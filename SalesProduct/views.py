@@ -13,7 +13,7 @@ class SalesView(ModelViewSet):
 
 class SalesSaveView(ViewSet):
     def create(self,request):
-        print(request.data,'\n')
+        # print(request.data,'\n')
         serializer = SalesSerializers(data=request.data,required=False)
         serializer.is_valid()
         # print('serializer data',serializer.data,'\n')

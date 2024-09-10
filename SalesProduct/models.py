@@ -15,6 +15,7 @@ class SalesModel(models.Model):
     cash = models.DecimalField(max_digits=12,decimal_places=2,default=0)
     outstanding = models.DecimalField(max_digits=12,decimal_places=2,default=0)
     sales_item = models.ManyToManyField(ProductModel)
+    sales_quantity=models.CharField(max_length=300)
     # sales_item=models.ExpressionList()
 
     seller = models.ForeignKey(User,on_delete=models.CASCADE)

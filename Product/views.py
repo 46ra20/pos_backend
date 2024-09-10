@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .serializer import ProductSerializer,CategorySerializer,BrandSerializer,ProductSearchByNameSerializer
-from .models import ProductModel,CategoryModel,BrandModel
+from .serializer import ProductSerializer,CategorySerializer,BrandSerializer,ProductSearchByNameSerializer,UnitSerializer
+from .models import ProductModel,CategoryModel,BrandModel,UnitModel
 
 from rest_framework.views import APIView,Response
 from rest_framework.viewsets import ViewSet,ModelViewSet
@@ -17,6 +17,10 @@ class CategoryView(ModelViewSet):
 class BrandView(ModelViewSet):
     serializer_class=BrandSerializer
     queryset=BrandModel.objects.all()
+
+class UnitView(ModelViewSet):
+    serializer_class=UnitSerializer
+    queryset=UnitModel.objects.all()
     
 
 class ProductView(ViewSet):
