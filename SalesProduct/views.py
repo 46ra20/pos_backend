@@ -15,7 +15,7 @@ class SalesSaveView(ViewSet):
     def create(self,request):
         # print(request.data,'\n')
         serializer = SalesSerializers(data=request.data,required=False)
-        serializer.is_valid()
+        # serializer.is_valid()
         # print('serializer data',serializer.data,'\n')
         print(serializer.errors)
         if serializer.is_valid():

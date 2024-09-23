@@ -28,7 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 # ALLOWED_ORIGINS=['*']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://pos-backend-1.onrender.com',
+    'http://127.0.0.1:5500'
+]
 
 # Application definition
 
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'OwnerAndBankAccount',
     'SalesProduct',
+    'Dashboard',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +65,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
+    'https://pos-backend-1.onrender.com'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
