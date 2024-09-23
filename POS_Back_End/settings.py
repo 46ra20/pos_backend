@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-od9)hoxzc^6_$u4=_qnairxcz=x2g-+b1rc)-hsb(p!$mt0r=6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pos-backend-1.onrender.com']
 # ALLOWED_ORIGINS=['*']
 
 CSRF_TRUSTED_ORIGINS = [
