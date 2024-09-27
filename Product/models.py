@@ -4,21 +4,21 @@ from Account.models import User
 # Create your models here.
 class CategoryModel(models.Model):
     category=models.CharField(max_length=30)
-    slug=models.CharField(max_length=30)
+    slug=models.CharField(max_length=250)
 
     def __str__(self) -> str:
         return self.category
     
 class BrandModel(models.Model):
     brand=models.CharField(max_length=30)
-    slug = models.CharField(max_length=30)
+    slug = models.CharField(max_length=250)
 
     def __str__(self) -> str:
         return self.brand
     
 class UnitModel(models.Model):
     unit=models.CharField(max_length=20)
-    slug=models.CharField(max_length=20)
+    slug=models.CharField(max_length=250)
 
     def __str__(self) -> str:
         return self.unit
